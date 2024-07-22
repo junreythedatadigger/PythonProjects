@@ -1,4 +1,6 @@
-# Basic calculator that performs addition, subtraction, multiplication and division of two numbers
+# Calculator
+# Build a basic calculator that can perform operations like addition, subtraction,
+# multiplication, and division. This will give you practice with functions and control
 def calculate(first_num, operator, second_num):
     if operator == '*':
         return first_num * second_num
