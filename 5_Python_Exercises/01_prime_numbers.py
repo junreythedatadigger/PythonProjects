@@ -5,16 +5,16 @@
 
 maximum_number = int(input("Enter the maximum number: "))   # Get the max number to evaluate
 prime_numbers = ""                                          # Store the prime numbers
-divisor_count = 0                                           # Store the counter of divisors for num
+divisor_count = 0                                           # Counter of the divisors for number
 for number in range(2, maximum_number+1):                   # Loop through num from 2 up to max number
     divisor_count = 0                                       # Reset the number of divisible number to 0
-    for divisor in range(1, number+1):                      # Loop through divisor from 1 up to the num being evaluated
-        if number % divisor == 0:                           # Check if num is divisible by divisor
-            divisor_count += 1                              # Count up the instances num is divisible by divisor
-    if divisor_count < 3:                                   # Check if the divisibility of num is less than 3
+    for divisor in range(1, number+1):                      # Loop through divisor from 1 up to the number being evaluated
+        if number % divisor == 0:                           # Check if number is divisible by divisor
+            divisor_count += 1                              # If true then count up the instances number is divisible by divisor
+    if divisor_count < 3:                                   # Check if the divisibility of number is less than 3. This is a prime number.
         if prime_numbers == "":                             # Check if prime_numbers is still empty
-            prime_numbers += str(number)                    # Append num only, the first value
+            prime_numbers += str(number)                    # If true then append the number only, the first value
         else:
-            prime_numbers += ", " + str(number)             # Append a comma and num for succeeding values
+            prime_numbers += ", " + str(number)             # Or else append a comma and num for succeeding values
 
 print(f'Prime numbers: {prime_numbers}')                    # Print all the identified prime numbers
