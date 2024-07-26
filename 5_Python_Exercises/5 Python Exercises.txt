@@ -1,0 +1,16 @@
+5 Python exercises that will help you practice your programming and problem-solving skills.
+
+1. Prime Numbers
+Create a function that returns a list of all prime numbers up to a given number. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. For example, 2, 3, 5, 7, and 11 are prime numbers.
+
+2. List Overlap
+Write a program that returns a list containing only the common elements between two lists. For example, given the lists [1, 2, 3, 4] and [3, 4, 5, 6], the program should return [3, 4].
+
+3. List Remove Duplicates
+Write a function that removes duplicates from a list. For example, given the list [1, 2, 2, 3, 4, 4, 5], the function should return [1, 2, 3, 4, 5].
+
+4. Fibonacci Sequence
+Write a function that generates the first 10 numbers in the Fibonacci sequence. The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, starting from 0 and 1. For example, the first 10 numbers are: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34.
+
+5. Palindrome Checker
+Write a function that checks if a given string is a palindrome. A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward (ignoring spaces, punctuation, and capitalization). For example, "radar" and "level" are palindromes.
