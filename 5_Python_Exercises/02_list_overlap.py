@@ -2,40 +2,41 @@
 # Write a program that returns a list containing only the common elements between two lists.
 # For example, given the lists [1, 2, 3, 4] and [3, 4, 5, 6], the program should return [3, 4].
 
-# list1 = [1,2,3,4,6]
-# list2 = [3,4,4,5,6]
+entered_list1 = input("Enter 1st list separated by comma: ").split(",")
+entered_list2 = input("Enter 2nd list separated by comma: ").split(",")
+# entered_list1 = [1,2,3,4,1,2,3,4]
+# entered_list2 = [3,4,4,5,6,1,2,2]
 
-list1 = input("Enter 1st list separated by comma: ").split(",")
-list2 = input("Enter 2nd list separated by comma: ").split(",")
-print(f'list1 = {list1}')
-print(f'list2 = {list2}')
-new_list = []
+# Convert each element from string to integer
+entered_list1 = [int(i) for i in entered_list1]
+entered_list2 = [int(i) for i in entered_list2]
 
-i, j = 0, 0
-while i < len(list1):
-    # print(f'len(list1)={len(list1)}')
-    # print(f'i={i}')
-    while j < len(list2):
-        # print(f'len(list1)={len(list1)}, len(list2)={len(list2)}')
-        # print(f'i={i}, j={j}')
-        try:
-            if list1[i] == list2[j]:
-                # print(f'list1[i]={list1[i]}, list2[j]={list2[j]}')
-                new_list.append(list1[i])
-                list1.pop(i)
-                list2.pop(j)
-                # print(f'new_list={new_list}')
-                # print(f'list1={list1}')
-                # print(f'list2={list2}')
-                # j -= 1
+# Sort the elements into ascending order
+entered_list1.sort()
+entered_list2.sort()
+
+# Store the sorted lists
+sorted_list1 = entered_list1
+sorted_list2 = entered_list2
+
+# Storage for the list of overlapping elements
+list_overlap = []
+
+i, j = 0, 0                                             # Initialize index counters to 0
+while i < len(sorted_list1):                            # Loop through the 1st sorted list
+    while j < len(sorted_list2):                        # Loop through the 2nd sorted list
+        try:                                            # Try if index is out of range
+            if sorted_list1[i] == sorted_list2[j]:      # Check if elements between list matches
+                list_overlap.append(sorted_list1[i])    # If true then store element to list_overlap
+                sorted_list1.pop(i)                     # Then remove matching element in sorted_list1
+                sorted_list2.pop(j)                     # Then remove matching element in sorted_list2
             else:
-                j += 1
-        except IndexError as error:
+                j += 1                                  # Or else increment counter for sorted_list2
+        except IndexError as error:                     # If IndexError then catch and proceed
             # print(f'Error: {error}')
             break
     else:
-        i += 1
-        # if j == len(list2):
-        j = 0
+        i += 1                                          # Increment sorted_list1 counter
+        j = 0                                           # Reset to 0 sorted-list2 counter
 
-print(f'List overlap = {new_list}')
+print(f'List of common elements = {list_overlap}')      # Print all the common elements between lists
