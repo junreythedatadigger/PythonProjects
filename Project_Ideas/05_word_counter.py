@@ -3,7 +3,7 @@
 # given text file. This will give you experience with file I/O operations and string
 # manipulation.
 
-f = open('README.md', 'rt')
+f = open('../README.md', 'rt')
 # print(f.read(2))
 
 # contents = f.read()
