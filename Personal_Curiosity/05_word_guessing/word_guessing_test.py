@@ -3,19 +3,28 @@ import word_guessing as wg
 
 class TestWordGuessing(unittest.TestCase):
 
-    def test_check_guessing(self):
-        self.assertEqual(wg.check_guess("sample", "a"),[1])
-        self.assertEqual(wg.check_guess("Sample", "s"),[0])
-        self.assertEqual(wg.check_guess("alphabet", "a"), [0,4])
-        self.assertEqual(wg.check_guess("separate", "a"), [3,5])
-        self.assertEqual(wg.check_guess("mississippi", "s"), [2,3,5,6])
-        self.assertEqual(wg.check_guess("Hello World!", "l"), [2,3,9])
+    def test_validate_guessing(self):
+        self.assertEqual(wg.validate_guess(
+            "sample", "******", "a"),
+            ("*a****", True))
+        self.assertEqual(wg.validate_guess(
+            "sample", "*a****", "e"),
+            ("*a***e", True))
+        self.assertEqual(wg.validate_guess(
+            "sample", "*a***e", "b"),
+            ("*a***e", False))
+        # self.assertEqual(wg.validate_guess("Sample", "s"),"s*****")
+        # self.assertEqual(wg.validate_guess("alphabet", "a"), "a***a***")
+        self.assertEqual(wg.validate_guess("separate", "********", "b"), ("********",False))
+        # self.assertEqual(wg.validate_guess("mississippi", "s"), "**ss*ss****")
+        # self.assertEqual(wg.validate_guess("Hello World!", "l"), "**ll* ***l**")
 
     def test_print_blank_word(self):
         self.assertEqual(wg.print_blank_word("sample"), "******")
-        self.assertEqual(wg.print_blank_word("Hello World!"), "************")
+        self.assertEqual(wg.print_blank_word("Hello World!"), "***** ******")
 
-
+    # def test_show_matched_letters(self):
+    #     self.assertEqual(wg.show_matched_letters("a",[0,3],"a**a"))
 
 if __name__ == "__name__":
     unittest.main()

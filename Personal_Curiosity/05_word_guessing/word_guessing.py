@@ -1,13 +1,41 @@
-def check_guess(random_word, guessed_letter):
+from random_word import RandomWords
+r = RandomWords()
 
-    indexes = []
+def validate_guess(random_word, incomplete_word, guessed_letter):
+    is_guess_correct = False
+    # guessed_word = ""
+
+    if incomplete_word:
+        guessed_word = [i for i in incomplete_word]
+    else:
+        guessed_word = [i for i in print_blank_word(random_word)]
+
     for i in range(len(random_word)):
         if random_word[i].lower() == guessed_letter:
-            indexes.append(i)
+            guessed_word[i] = random_word[i]
+            is_guess_correct = True
 
-    return indexes
+    return "".join(guessed_word), is_guess_correct
+
 
 def print_blank_word(random_word):
-    display_word = "*" * len(random_word)
+
+    display_word = ""
+    for i in random_word:
+        if i != " ":
+            display_word += "*"
+        else:
+            display_word += " "
     return display_word
 
+# random_word = "Hello world!"
+random_word = r.get_random_word()
+print(print_blank_word(random_word))
+guessed_word = ""
+guessed_letter = ""
+typed_letters = ""
+while random_word != guessed_word:
+    guessed_letter = input("Enter letter: ")
+    typed_letters += guessed_letter
+    guessed_word, is_correct = validate_guess(random_word,guessed_word,guessed_letter)
+    print(guessed_word, typed_letters)
