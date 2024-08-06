@@ -27,6 +27,14 @@ class TestWordGuessing(unittest.TestCase):
         self.assertEqual(wg.get_unique_letters("sample"),"aelmps")
         self.assertEqual(wg.get_unique_letters("availability"),"abiltvy")
 
+    def test_show_number_of_life(self):
+        self.assertEqual(wg.show_number_of_life(2),"♡♡")
+        self.assertEqual(wg.show_number_of_life(0),"")
+
+    def test_show_remaining_letters(self):
+        self.assertEqual(wg.show_remaining_letters("abcdefghijklmnopqrstuvwxyz", "a"), "_bcdefghijklmnopqrstuvwxyz")
+        self.assertEqual(wg.show_remaining_letters("_bcdefghijklmnopqrstuvwxyz", "a"), "_bcdefghijklmnopqrstuvwxyz")
+
     # def test_show_matched_letters(self):
     #     self.assertEqual(wg.show_matched_letters("a",[0,3],"a**a"))
 
