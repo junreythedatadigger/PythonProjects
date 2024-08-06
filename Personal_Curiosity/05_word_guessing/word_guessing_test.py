@@ -23,6 +23,10 @@ class TestWordGuessing(unittest.TestCase):
         self.assertEqual(wg.print_blank_word("sample"), "******")
         self.assertEqual(wg.print_blank_word("Hello World!"), "***** ******")
 
+    def test_get_unique_letters(self):
+        self.assertEqual(wg.get_unique_letters("sample"),"aelmps")
+        self.assertEqual(wg.get_unique_letters("availability"),"abiltvy")
+
     # def test_show_matched_letters(self):
     #     self.assertEqual(wg.show_matched_letters("a",[0,3],"a**a"))
 

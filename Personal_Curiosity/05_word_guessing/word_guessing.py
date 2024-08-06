@@ -28,9 +28,19 @@ def print_blank_word(random_word):
             display_word += " "
     return display_word
 
+def get_unique_letters(random_word):
+    unique_letters = ""
+    random_word_list = [i for i in random_word]
+    random_word_list.sort()
+
+    for i in random_word_list:
+        if i not in unique_letters:
+            unique_letters += i
+    return unique_letters
+
 # random_word = "Hello world!"
 random_word = r.get_random_word()
-print(print_blank_word(random_word))
+print(f"{print_blank_word(random_word)}  : Length: {len(get_unique_letters(random_word))}")
 guessed_word = ""
 guessed_letter = ""
 typed_letters = ""
