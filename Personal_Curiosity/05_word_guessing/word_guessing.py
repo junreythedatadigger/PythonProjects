@@ -1,6 +1,10 @@
 from random_word import RandomWords
 r = RandomWords()
 
+from PyDictionary import PyDictionary
+
+dictionary=PyDictionary()
+
 
 def validate_guess(random_word, incomplete_word, guessed_letter):
     is_guess_correct = False
@@ -66,7 +70,8 @@ def main():
     # random_word = "Hello world!"
     random_word = r.get_random_word()
     # display_on_console(random_word, number_of_life, alphabet)
-    # print(random_word)
+    print(random_word)
+    print(dictionary.meaning(random_word))
     print(f"Try to guess this {len(random_word)} letter word.")
     print(f"Word: {print_blank_word(random_word)}")
     print(f"Life: ({number_of_life}) {show_number_of_life(number_of_life)}")
