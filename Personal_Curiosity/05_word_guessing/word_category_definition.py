@@ -14,6 +14,8 @@ r = RandomWords()
 
 import json
 
+import time
+
 # Download necessary NLTK data files
 # Execute once
 # nltk.download('wordnet')
@@ -21,9 +23,10 @@ import json
 # nltk.download('averaged_perceptron_tagger')
 # nltk.download('punkt')
 
-# # For universal tag-set. Execute once
+# For universal tag-set. Execute once
 # nltk.download('brown')
 # nltk.download('universal_tagset')
+# nltk.download('wordnet')
 
 # A list of random words
 # words_list = [
@@ -78,12 +81,17 @@ save_file = "words_list.json"
 words = load_words(filename)
 words_key = list(words.keys())
 words_list = []
-# for i in range(len(words_key)):
-for i in range(50):
+print(len(words_key))
+for i in range(len(words_key)):
+# for i in range(50):
     description = get_definition(words_key[i])
     if description != "Definition not found.":
         # print(f"{words_key[i]}: {get_part_of_speech(words_key[i])}:  {get_definition(words_key[i])}")
         words_list.append([words_key[i], get_part_of_speech(words_key[i]), get_definition(words_key[i])])
+    if i % 1000 == 0:
+        obj = time.localtime()
+        t = time.asctime(obj)
+        print(f"i = {i}   Timestamp: {t}")
 
 save_words(save_file, words_list)
 
