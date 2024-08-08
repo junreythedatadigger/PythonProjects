@@ -2,8 +2,18 @@ from random_word import RandomWords
 r = RandomWords()
 
 from PyDictionary import PyDictionary
-
 dictionary=PyDictionary()
+
+import random
+import json
+
+def load_words(filename):
+    try:
+        with open(filename, 'r') as file:
+            words_json = json.load(file)
+    except FileNotFoundError:
+        words_json = {}
+    return words_json
 
 
 def validate_guess(random_word, incomplete_word, guessed_letter):
@@ -68,37 +78,47 @@ def main():
     number_of_life = 10
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     # random_word = "Hello world!"
-    random_word = r.get_random_word()
+    filename = "words_list.json"
+    words_dictionary = load_words(filename)
+    # print(len(words_dictionary))
+    word_from_dictionary = random.choice(words_dictionary)
+    print(word_from_dictionary[0])
+    # random_word = r.get_random_word()
+    # random_word = word_from_dictionary[0]
     # display_on_console(random_word, number_of_life, alphabet)
-    print(random_word)
-    print(dictionary.meaning(random_word))
-    print(f"Try to guess this {len(random_word)} letter word.")
-    print(f"Word: {print_blank_word(random_word)}")
+    # print(random_word)
+    # print(dictionary.meaning(random_word))
+    print(f"Try to guess this {len(word_from_dictionary[0])} letter word.")
+    print(f"Word: {print_blank_word(word_from_dictionary[0])}")
+    print(f'Category: {word_from_dictionary[1]}')
+    print(f'Definition: {word_from_dictionary[2]}')
     print(f"Life: ({number_of_life}) {show_number_of_life(number_of_life)}")
     print(f"Left: {show_remaining_letters(alphabet, "")}")
     guessed_word = ""
     typed_letters = ""
     letters_left = ""
-    while random_word != guessed_word and number_of_life > 0:
+    while word_from_dictionary[0] != guessed_word and number_of_life > 0:
         guessed_letter = input("Enter letter: ")
         typed_letters += guessed_letter
-        guessed_word, is_correct = validate_guess(random_word,guessed_word,guessed_letter)
+        guessed_word, is_correct = validate_guess(word_from_dictionary[0],guessed_word,guessed_letter)
         if is_correct == False:
             number_of_life -= 1
         print("")
-        print(f"Try to guess this {len(random_word)} letter word.")
+        print(f"Try to guess this {len(word_from_dictionary[0])} letter word.")
         print(f"Word: {guessed_word}")
+        print(f'Category: {word_from_dictionary[1]}')
+        print(f'Definition: {word_from_dictionary[2]}')
         print(f"Life: ({number_of_life}) {show_number_of_life(number_of_life)}")
         letters_left = show_remaining_letters(alphabet, guessed_letter)
         print(f"Left: {letters_left}")
         alphabet = letters_left
 
-    if random_word == guessed_word:
+    if word_from_dictionary[0] == guessed_word:
         print("")
         print(f"Congratulations! You got the word {guessed_word}.")
     elif number_of_life == 0:
         print("")
-        print(f"Sorry, you did not get the word {random_word}.")
+        print(f"Sorry, you did not get the word {word_from_dictionary[0]}.")
 
 if __name__ == "__main__":
     main()
