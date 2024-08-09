@@ -1,8 +1,8 @@
-from random_word import RandomWords
-r = RandomWords()
-
-from PyDictionary import PyDictionary
-dictionary=PyDictionary()
+# from random_word import RandomWords
+# r = RandomWords()
+#
+# from PyDictionary import PyDictionary
+# dictionary=PyDictionary()
 
 import random
 import json
@@ -67,13 +67,6 @@ def show_remaining_letters(alphabet,letter):
     return "".join(alphabet_list)
 
 
-# def display_on_console(random_word, guessed_word, number_of_life, alphabet):
-#     print(f"Try to guess this {len(get_unique_letters(random_word))} letter word.")
-#     print(f"Word: {print_blank_word(random_word)}")
-#     print(f"Life: {show_number_of_life(number_of_life)}")
-#     print(f"Left: {show_remaining_letters(alphabet, "")}")
-
-
 def main():
     number_of_life = 10
     alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -82,16 +75,16 @@ def main():
     words_dictionary = load_words(filename)
     # print(len(words_dictionary))
     word_from_dictionary = random.choice(words_dictionary)
-    print(word_from_dictionary[0])
+    # print(word_from_dictionary[0])
     # random_word = r.get_random_word()
     # random_word = word_from_dictionary[0]
     # display_on_console(random_word, number_of_life, alphabet)
     # print(random_word)
     # print(dictionary.meaning(random_word))
     print(f"Try to guess this {len(word_from_dictionary[0])} letter word.")
-    print(f"Word: {print_blank_word(word_from_dictionary[0])}")
-    print(f'Category: {word_from_dictionary[1]}')
-    print(f'Definition: {word_from_dictionary[2]}')
+    print(f"Word: {print_blank_word(word_from_dictionary[0])}     Category: {word_from_dictionary[1]}")
+    # print(f'Category: {word_from_dictionary[1]}')
+    print(f'Definition: {word_from_dictionary[2].capitalize()}')
     print(f"Life: ({number_of_life}) {show_number_of_life(number_of_life)}")
     print(f"Left: {show_remaining_letters(alphabet, "")}")
     guessed_word = ""
@@ -105,9 +98,9 @@ def main():
             number_of_life -= 1
         print("")
         print(f"Try to guess this {len(word_from_dictionary[0])} letter word.")
-        print(f"Word: {guessed_word}")
-        print(f'Category: {word_from_dictionary[1]}')
-        print(f'Definition: {word_from_dictionary[2]}')
+        print(f"Word: {guessed_word}     Category: {word_from_dictionary[1]}")
+        # print(f'Category: {word_from_dictionary[1]}')
+        print(f'Definition: {word_from_dictionary[2].capitalize()}')
         print(f"Life: ({number_of_life}) {show_number_of_life(number_of_life)}")
         letters_left = show_remaining_letters(alphabet, guessed_letter)
         print(f"Left: {letters_left}")
