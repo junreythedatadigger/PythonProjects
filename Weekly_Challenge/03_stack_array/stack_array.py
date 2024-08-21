@@ -6,4 +6,26 @@
 # peek() - Returns the top element without removing it.
 # isEmpty() - Checks if the stack is empty.
 
-def push(element):
+class Stack:
+
+    def __init__(self, stack_array=[]):
+        self.stack_array = stack_array
+
+    def push(self, element):
+        self.stack_array.append(element)
+        return self.stack_array
+
+    def pop(self):
+        last_element = self.stack_array[-1]
+        self.stack_array.pop(-1)
+        return last_element
+
+    def peek(self):
+        last_element = self.stack_array[-1]
+        return last_element
+
+    def is_empty(self):
+        if len(self.stack_array) == 0:
+            return True
+        else:
+            return False
