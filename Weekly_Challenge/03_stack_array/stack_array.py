@@ -17,7 +17,7 @@ class Stack:
 
     def pop(self):
         last_element = self.stack_array[-1]
-        self.stack_array.pop(-1)
+        self.stack_array.pop()
         return last_element
 
     def peek(self):

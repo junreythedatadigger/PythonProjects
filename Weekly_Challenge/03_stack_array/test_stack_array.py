@@ -14,9 +14,9 @@ class TestStackArray(unittest.TestCase):
         self.assertEqual(self.stack.push(5), [1, 2, 3, 1, 5])
 
     def test_pop(self):
-        self.assertEqual(self.stack.pop(),3)
-        self.assertEqual(self.stack.pop(),2)
-        self.assertEqual(self.stack.pop(),1)
+        self.assertEqual(self.stack.pop(), 3)
+        self.assertEqual(self.stack.pop(), 2)
+        self.assertEqual(self.stack.pop(), 1)
 
     def test_peek(self):
         self.assertEqual(self.stack.peek(), 3)
@@ -28,13 +28,12 @@ class TestStackArray(unittest.TestCase):
         self.stack = Stack([4, 5, 6, 7, 8])
         self.assertEqual(self.stack.push(1), [4, 5, 6, 7, 8, 1])
         self.assertEqual(self.stack.pop(), 1)
-        self.assertEqual(self.stack.peek(),8)
+        self.assertEqual(self.stack.peek(), 8)
         self.assertEqual(self.stack.is_empty(), False)
         self.assertEqual(self.stack.pop(), 8)
         self.assertEqual(self.stack.pop(), 7)
-        self.assertEqual(self.stack.peek(),6)
+        self.assertEqual(self.stack.peek(), 6)
         self.assertEqual(self.stack.is_empty(), False)
-
 
 
 if __name__ == "__name__":
