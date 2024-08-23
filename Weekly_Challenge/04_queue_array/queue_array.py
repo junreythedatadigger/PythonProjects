@@ -2,10 +2,9 @@
 # A queue is a data structure that follows the First In, First Out (FIFO) principle.
 
 
-
 class Queue:
 
-    def __init__(self, queue_array=[]):
+    def __init__(self, queue_array: []):
         self.queue_array = queue_array
 
     def add(self, element):
@@ -23,13 +22,22 @@ class Queue:
         else:
             return False
 
+    def reverse(self):
+        stack = []
+        while not self.is_empty():
+            stack.append(self.remove())
+
+        while stack:
+            self.add(stack.pop(-1))
+
+        return self
+
 
 def main():
-    queue = Queue([1, 2, 3, 4, 5])
-    stack = []
-    while not queue.is_empty():
-        stack.append(queue.remove())
-    print(stack)
+    original_queue = Queue([1, 2, 3, 4, 5])
+    print(f'Original queue: {original_queue.queue_array}')
+    reversed_queue = original_queue.reverse()
+    print(f'Reversed queue: {reversed_queue.queue_array}')
 
 
 if __name__ == "__main__":
