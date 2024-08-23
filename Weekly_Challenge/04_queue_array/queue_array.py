@@ -30,14 +30,14 @@ class Queue:
         while stack:
             self.add(stack.pop(-1))
 
-        return self
+        return self.queue_array
 
 
 def main():
     original_queue = Queue([1, 2, 3, 4, 5])
     print(f'Original queue: {original_queue.queue_array}')
     reversed_queue = original_queue.reverse()
-    print(f'Reversed queue: {reversed_queue.queue_array}')
+    print(f'Reversed queue: {reversed_queue}')
 
 
 if __name__ == "__main__":
